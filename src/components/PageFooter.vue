@@ -4,7 +4,9 @@
       <el-col :span="7"
         ><div class="grid-content" />
         <div class="logo">
-          <a><img src="../assets/images/logo2.svg" class="logoimg" /></a>
+          <a href="#"
+            ><img src="../assets/images/logo2.svg" class="logoimg"
+          /></a>
 
           <div class="socialmedia">
             <a href="#"><img src="../assets/images/insta.svg" /></a>
