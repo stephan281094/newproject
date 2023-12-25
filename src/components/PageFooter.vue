@@ -7,37 +7,42 @@
           <a><img src="../assets/images/logo2.svg" class="logoimg" /></a>
 
           <div class="socialmedia">
-            <a href="#"><img src="../assets/images/insta.svg" /></a
-            ><a href="#"></a
-            ><a href="#"><img src="../assets/images/twitter.svg" /></a
+            <a href="#"><img src="../assets/images/insta.svg" /></a>
+            <a href="#"><img src="../assets/images/twitter.svg" /></a
             ><a href="#"><img src="../assets/images/facebook.svg" /></a>
           </div>
         </div>
       </el-col>
       <el-col :span="5"
         ><div class="grid-content" />
-        <div v-for="menu of menus">
-          <a href="#"
-            ><p class="menuoption">{{ menu }}</p></a
+        <div v-for="item of menuItems" :key="item.id">
+          <a :href="item.link"
+            ><p class="menuoption">{{ item.text }}</p></a
           >
         </div></el-col
       >
       <el-col :span="5"
         ><div class="grid-content" />
-        <div v-for="link of additionalLinks">
-          <a href="#">
-            <p class="link">{{ link }}</p>
+        <div v-for="link of additionalLinks" :key="link.id">
+          <a :href="link.link">
+            <p class="link">{{ link.text }}</p>
           </a>
         </div></el-col
       >
       <el-col :span="7"
         ><div class="grid-content" />
         <div class="podcasts">
-          <a href="#"><img src="../assets/images/spotify.svg" /></a
-          ><a href="#"><img src="../assets/images/pocketcasts.svg" /></a
-          ><a href="#"><img src="../assets/images/soundcloud.svg" /></a
-          ><a href="#"><img src="../assets/images/apple.svg" /></a
-          ><a href="#"><img src="../assets/images/overcast.svg" alt="" /></a>
+          <a href="https://www.spotify.com"
+            ><img src="../assets/images/spotify.svg" /></a
+          ><a href="https://pocketcasts.com"
+            ><img src="../assets/images/pocketcasts.svg" /></a
+          ><a href="https://soundcloud.com"
+            ><img src="../assets/images/soundcloud.svg" /></a
+          ><a href="https://www.apple.com/apple-podcasts/"
+            ><img src="../assets/images/apple.svg" /></a
+          ><a href="https://overcast.fm"
+            ><img src="../assets/images/overcast.svg" alt=""
+          /></a>
         </div>
       </el-col>
     </el-row>
@@ -45,19 +50,8 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      menus: ["Home", "About", "Episodes", "Contact"],
-      additionalLinks: [
-        "Style Guide",
-        "Instructions",
-        "Changelog",
-        "Credit",
-        "Powered by Webflow",
-        "Licenses",
-      ],
-    };
-  },
+  name: "PageFooter",
+  props: ["menuItems", "additionalLinks"],
 };
 </script>
 <style scoped>
@@ -72,10 +66,16 @@ export default {
   text-decoration: none;
   font: 17px sans-serif;
 }
+.menuoption:hover {
+  color: #118da8;
+}
 .link {
   color: #ffffff;
   text-decoration: none;
   font: 17px sans-serif;
+}
+.link:hover {
+  color: #118da8;
 }
 .podcasts {
   display: flex;
