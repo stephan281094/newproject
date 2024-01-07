@@ -79,9 +79,3 @@ export default {
   },
 };
 </script>
-<style>
-* {
-  text-decoration: none;
-  background-color: #191919;
-}
-</style>
