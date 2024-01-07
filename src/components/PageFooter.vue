@@ -4,14 +4,11 @@
       <el-col :span="7"
         ><div class="grid-content" />
         <div class="logo">
-          <a href="#"
-            ><img src="../assets/images/logo2.svg" class="logoimg"
-          /></a>
+          <a href="#"><LogoFooter class="logoImage" /></a>
 
           <div class="socialmedia">
-            <a href="#"><img src="../assets/images/insta.svg" /></a>
-            <a href="#"><img src="../assets/images/twitter.svg" /></a
-            ><a href="#"><img src="../assets/images/facebook.svg" /></a>
+            <a href="#"><InstagramIcon /></a>
+            <a href="#"><TwitterIcon /></a><a href="#"><FacebookIcon /></a>
           </div>
         </div>
       </el-col>
@@ -34,26 +31,41 @@
       <el-col :span="7"
         ><div class="grid-content" />
         <div class="podcasts">
-          <a href="https://www.spotify.com"
-            ><img src="../assets/images/spotify.svg" /></a
-          ><a href="https://pocketcasts.com"
-            ><img src="../assets/images/pocketcasts.svg" /></a
-          ><a href="https://soundcloud.com"
-            ><img src="../assets/images/soundcloud.svg" /></a
+          <a href="https://www.spotify.com"><SpotifyIcon /></a
+          ><a href="https://pocketcasts.com"><PocketCastIcon /></a
+          ><a href="https://soundcloud.com"><SoundCloudIcon /></a
           ><a href="https://www.apple.com/apple-podcasts/"
-            ><img src="../assets/images/apple.svg" /></a
-          ><a href="https://overcast.fm"
-            ><img src="../assets/images/overcast.svg" alt=""
-          /></a>
+            ><ApplePodcastIcon /></a
+          ><a href="https://overcast.fm"><OvercastIcon /></a>
         </div>
       </el-col>
     </el-row>
   </footer>
 </template>
 <script>
+import LogoFooter from "./icons/LogoFooter.vue";
+import InstagramIcon from "./icons/InstagramIcon.vue";
+import TwitterIcon from "./icons/TwitterIcon.vue";
+import FacebookIcon from "./icons/FacebookIcon.vue";
+import SpotifyIcon from "./icons/SpotifyIcon.vue";
+import PocketCastIcon from "./icons/PocketCastIcon.vue";
+import SoundCloudIcon from "./icons/SoundCloudIcon.vue";
+import ApplePodcastIcon from "./icons/ApplePodcastIcon.vue";
+import OvercastIcon from "./icons/OvercastIcon.vue";
 export default {
   name: "PageFooter",
   props: ["menuItems", "additionalLinks"],
+  components: {
+    LogoFooter,
+    InstagramIcon,
+    TwitterIcon,
+    FacebookIcon,
+    SpotifyIcon,
+    PocketCastIcon,
+    SoundCloudIcon,
+    ApplePodcastIcon,
+    OvercastIcon,
+  },
 };
 </script>
 <style scoped>
@@ -85,7 +97,7 @@ export default {
   gap: 1rem;
   margin-top: 1rem;
 }
-.logoimg {
+.logoImage {
   margin-left: 1.5rem;
 }
 .logo {

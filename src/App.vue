@@ -1,6 +1,7 @@
 <template>
   <div>
     <page-header :menuItems="menuItems"></page-header>
+    <main-layout />
     <page-footer
       :menuItems="menuItems"
       :additionalLinks="additionalLinks"
@@ -10,9 +11,14 @@
 <script>
 import PageHeader from "./components/PageHeader.vue";
 import PageFooter from "./components/PageFooter.vue";
+import MainLayout from "@/components/MainLayout.vue";
 
 export default {
-  components: { PageHeader, PageFooter },
+  components: {
+    PageHeader,
+    PageFooter,
+    MainLayout,
+  },
   data() {
     return {
       menuItems: [
@@ -75,7 +81,7 @@ export default {
 </script>
 <style>
 * {
-  background-color: #191919;
   text-decoration: none;
+  background-color: #191919;
 }
 </style>

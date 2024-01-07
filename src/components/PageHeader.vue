@@ -3,9 +3,7 @@
     <el-row align-center>
       <el-col :span="16"
         ><div class="grid-content" />
-        <a href="#"
-          ><img src="../assets/images/IMAGE-2.svg" class="logoimg"
-        /></a>
+        <a href="#"><HeaderLogo class="logoImage"></HeaderLogo></a>
       </el-col>
 
       <el-col :span="2" v-for="item of menuItems" :key="item.id"
@@ -18,16 +16,23 @@
   </header>
 </template>
 <script>
+import HeaderLogo from "./icons/LogoHeader.vue";
 export default {
   name: "PageHeader",
   props: ["menuItems"],
+  components: {
+    HeaderLogo,
+  },
 };
 </script>
 <style scoped>
-.logoimg {
+.logoImage {
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: 1.5rem;
+}
+.logoImage:hover {
+  color: #118da8;
 }
 .navlink {
   color: #ffffff;
