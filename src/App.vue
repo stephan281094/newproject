@@ -82,6 +82,5 @@ export default {
 <style>
 * {
   text-decoration: none;
-  background-color: #191919;
 }
 </style>

@@ -3,7 +3,9 @@
     <el-row align-center>
       <el-col :span="16"
         ><div class="grid-content" />
-        <a href="#"><HeaderLogo class="logoImage"></HeaderLogo></a>
+        <el-link :underline="false" href="#"
+          ><HeaderLogo class="logoImage"></HeaderLogo
+        ></el-link>
       </el-col>
 
       <el-col :span="2" v-for="item of menuItems" :key="item.id"

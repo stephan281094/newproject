@@ -1,8 +1,9 @@
 <template>
   <div>
     <div>
+      <!-- <el-button type="success" @click="getPokemon">Click</el-button> -->
       <el-row>
-        <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="5">
+        <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
           <el-card>
             <img
               src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
@@ -20,7 +21,6 @@
         v-model:current-page="currentPage"
         v-model:page-size="pageSize"
         :page-sizes="[10, 20, 50, 100, 200]"
-        :background="background"
         layout="sizes, prev, pager, next"
         :total="totalCount"
         @size-change="getData"
@@ -37,8 +37,8 @@ export default {
       currentPage: 1,
       pageSize: 10,
       totalCount: 0,
-      background: false,
       pokemons: [],
+      pokemonAbilities: [],
     };
   },
   methods: {
@@ -59,6 +59,16 @@ export default {
           console.warn(error);
         });
     },
+    getPokemon(id) {
+      this.axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+    },
   },
   mounted() {
     this.getData();
@@ -73,10 +83,10 @@ export default {
   font-size: 20px;
 }
 .el-row {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 4.25rem;
-  margin-top: 30px;
+  gap: 3rem;
 }
 .el-pagination {
   display: flex;
