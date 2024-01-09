@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      <!-- <el-button type="success" @click="getPokemon">Click</el-button> -->
       <el-row>
         <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
           <el-card>
@@ -38,7 +37,6 @@ export default {
       pageSize: 10,
       totalCount: 0,
       pokemons: [],
-      pokemonAbilities: [],
     };
   },
   methods: {

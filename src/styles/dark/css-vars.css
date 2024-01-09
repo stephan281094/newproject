@@ -1,3 +1,4 @@
 html.dark {
-  --el-bg-color: #626aef;
+  --el-bg-color: #191919;
+  background: var(--el-bg-color);
 }
