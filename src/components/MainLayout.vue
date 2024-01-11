@@ -4,10 +4,7 @@
       <el-row>
         <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
           <el-card>
-            <img
-              src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-              class="image"
-            />
+            <img :src="pokemon.sprites.front_default" class="image" />
             <div>
               <p class="pokemonName">{{ pokemon.name }}</p>
             </div>
@@ -48,9 +45,15 @@ export default {
           }&limit=${this.pageSize}`
         )
         .then((response) => {
+          this.pokemons = [];
           console.log(response);
           this.totalCount = response.data.count;
-          this.pokemons = response.data.results;
+          response.data.results.forEach((item) =>
+            this.axios
+              .get(item.url)
+              .then((resp) => this.pokemons.push(resp.data))
+          );
+
           this.loading = false;
         })
         .catch((error) => {

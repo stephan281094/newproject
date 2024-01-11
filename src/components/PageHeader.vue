@@ -4,8 +4,8 @@
       <el-col :span="16"
         ><div class="grid-content" />
         <el-link :underline="false" href="#"
-          ><HeaderLogo class="logoImage"></HeaderLogo
-        ></el-link>
+          ><img src="../assets/icons/LogoHeader.svg" class="logoImage" />
+        </el-link>
       </el-col>
 
       <el-col :span="2" v-for="item of menuItems" :key="item.id"
@@ -18,13 +18,9 @@
   </header>
 </template>
 <script>
-import HeaderLogo from "./icons/LogoHeader.vue";
 export default {
   name: "PageHeader",
   props: ["menuItems"],
-  components: {
-    HeaderLogo,
-  },
 };
 </script>
 <style scoped>
