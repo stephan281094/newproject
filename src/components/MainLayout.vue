@@ -1,32 +1,24 @@
 <template>
   <div>
-    <div>
-      <el-row>
-        <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
-          <el-card>
-            <img :src="pokemon.sprites.front_default" class="image" />
-            <div>
-              <p class="pokemonName">{{ pokemon.name }}</p>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-
-      <el-pagination
-        v-loading="loading"
-        v-model:current-page="currentPage"
-        v-model:page-size="pageSize"
-        :page-sizes="[10, 20, 50, 100, 200]"
-        layout="sizes, prev, pager, next"
-        :total="totalCount"
-        @size-change="getData"
-        @current-change="getData"
-      />
-    </div>
+    <pokemon-list :pokemons="pokemons" />
+    <pagination
+      :getData="getData"
+      :loading="loading"
+      :totalCount="totalCount"
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+    />
   </div>
 </template>
 <script>
+import Pagination from "./Pagination.vue";
+import PokemonList from "./PokemonList.vue";
+
 export default {
+  components: {
+    Pagination,
+    PokemonList,
+  },
   data() {
     return {
       loading: true,
@@ -46,25 +38,14 @@ export default {
         )
         .then((response) => {
           this.pokemons = [];
-          console.log(response);
           this.totalCount = response.data.count;
           response.data.results.forEach((item) =>
-            this.axios
-              .get(item.url)
-              .then((resp) => this.pokemons.push(resp.data))
+            this.axios.get(item.url).then((resp) => {
+              this.pokemons.push(resp.data);
+            })
           );
 
           this.loading = false;
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
-    },
-    getPokemon(id) {
-      this.axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        .then((response) => {
-          console.log(response.data);
         })
         .catch((error) => {
           console.warn(error);
@@ -76,24 +57,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.pokemonName {
-  color: #ffffff;
-  text-align: center;
-  text-transform: capitalize;
-  font-size: 20px;
-}
-.el-row {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-}
-.el-pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-</style>
+<style scoped></style>
