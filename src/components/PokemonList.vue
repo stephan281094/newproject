@@ -6,8 +6,22 @@
           <img :src="pokemon.sprites.front_default" class="image" />
 
           <h2 class="pokemonName">{{ pokemon.name }}</h2>
-          <p class="pokemonHeight">Height: {{ pokemon.height }}</p>
-          <p class="pokemonWeight">Weight: {{ pokemon.weight }}</p>
+          <p>
+            Height: <span class="pokemonHeight">{{ pokemon.height }}</span>
+          </p>
+          <p>
+            Weight: <span class="pokemonWeight">{{ pokemon.weight }}</span>
+          </p>
+          <p class="pokemonAbilities">
+            Abilities:
+            <span
+              v-for="ability in pokemon.abilities"
+              :key="pokemon.id"
+              class="pokemonAbility"
+            >
+              {{ ability.ability.name }}</span
+            >
+          </p>
         </div>
       </el-card>
     </el-col>
@@ -34,5 +48,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.pokemonAbilities {
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 </style>

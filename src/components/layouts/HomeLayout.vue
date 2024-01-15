@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-import Pagination from "./Pagination.vue";
-import PokemonList from "./PokemonList.vue";
+import Pagination from "../common/Pagination.vue";
+import PokemonList from "../PokemonList.vue";
 
 export default {
   components: {
