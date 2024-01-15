@@ -24,3 +24,6 @@ p {
 .pokemonAbility {
   font-style: italic;
 }
+* {
+  text-decoration: none;
+}
