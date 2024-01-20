@@ -1,21 +1,15 @@
 <template>
-  <el-dialog
-    v-model="activePokemon"
-    :title="pokemon.name"
-    width="30%"
-    v-for="pokemon in pokemons"
-    :key="pokemon.id"
-  >
+  <el-dialog v-model="dialogVisible" :title="pokemon?.name" width="30%">
     <p>
-      Height: <span class="pokemonHeight">{{ pokemon.height }}</span>
+      Height: <span class="pokemonHeight">{{ pokemon?.height }}</span>
     </p>
     <p>
-      Weight: <span class="pokemonWeight">{{ pokemon.weight }}</span>
+      Weight: <span class="pokemonWeight">{{ pokemon?.weight }}</span>
     </p>
     <p class="pokemonAbilities">
       Abilities:
       <span
-        v-for="ability in pokemon.abilities"
+        v-for="ability in pokemon?.abilities"
         :key="ability.id"
         class="pokemonAbility"
       >
@@ -24,17 +18,28 @@
     </p>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="primary" @click="activePokemon = null"> OK </el-button>
+        <el-button type="primary" @click="$emit('close')"> OK </el-button>
       </span>
     </template>
   </el-dialog>
 </template>
 <script>
 export default {
+  props: {
+    pokemon: {
+      type: Object,
+      required: false,
+    },
+  },
   data() {
     return {
-      // activePokemon: null,
+      dialogVisible: false,
     };
+  },
+  watch: {
+    pokemon(pokemon) {
+      this.dialogVisible = !!pokemon;
+    },
   },
 };
 </script>

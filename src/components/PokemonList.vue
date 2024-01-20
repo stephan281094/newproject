@@ -28,7 +28,10 @@
           </el-card>
         </el-col>
 
-        <pokemon-dialog v-if="activePokemon" :pokemon="activePokemon" />
+        <pokemon-dialog
+          :pokemon="activePokemon"
+          @close="activePokemon = null"
+        />
       </el-space>
     </el-row>
   </el-container>
