@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <el-footer>
     <el-row>
       <el-col :span="7"
         ><div class="grid-content" />
@@ -51,7 +51,7 @@
         </div>
       </el-col>
     </el-row>
-  </footer>
+  </el-footer>
 </template>
 <script>
 export default {
@@ -64,7 +64,6 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  margin-left: 1.5rem;
 }
 .podcasts {
   display: flex;

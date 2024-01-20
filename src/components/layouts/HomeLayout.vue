@@ -1,14 +1,15 @@
 <template>
-  <div>
-    <pokemon-list :pokemons="pokemons" />
-    <pagination
-      :getData="getData"
-      :loading="loading"
-      :totalCount="totalCount"
-      v-model:current-page="currentPage"
-      v-model:page-size="pageSize"
-    />
-  </div>
+  <el-main>
+    <div>
+      <pokemon-list :pokemons="pokemons" />
+      <pagination
+        :getData="getData"
+        :loading="loading"
+        :totalCount="totalCount"
+        v-model:current-page="currentPage"
+        v-model:page-size="pageSize"
+      /></div
+  ></el-main>
 </template>
 <script>
 import Pagination from "../common/Pagination.vue";

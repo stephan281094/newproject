@@ -14,10 +14,12 @@
     "unplugin-element-plus": "^0.8.0",
     "vue": "^3.3.11",
     "vue-axios": "^3.5.2",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
+    "prettier": "3.2.2",
     "vite": "^5.0.10"
   }
 }

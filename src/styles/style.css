@@ -3,6 +3,13 @@ h2,
 p {
   font-family: DM Sans;
 }
+.headerMenu {
+  color: #ffffff;
+  text-align: center;
+}
+.headerMenu:hover {
+  color: #118da8;
+}
 .menuOption {
   color: #ffffff;
   text-decoration: none;
@@ -10,9 +17,7 @@ p {
 .menuOption:hover {
   color: #118da8;
 }
-.logoImage {
-  margin-left: 1.5rem;
-}
+
 .logo {
   display: flex;
   flex-direction: column;

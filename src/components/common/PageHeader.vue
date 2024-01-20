@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <el-row align-center>
+  <el-header>
+    <el-row :gutter="20" justify="space-between">
       <el-col :span="18"
         ><div class="grid-content" />
         <router-link to="/"
@@ -10,29 +10,24 @@
 
       <el-col :span="2"
         ><div class="grid-content" />
-        <router-link to="/"><p class="menuOption">Home</p></router-link></el-col
+        <router-link to="/"><p class="headerMenu">Home</p></router-link></el-col
       >
       <el-col :span="2"
         ><div class="grid-content" />
         <router-link to="/abilities"
-          ><p class="menuOption">Abilities</p></router-link
+          ><p class="headerMenu">Abilities</p></router-link
         ></el-col
       >
       <el-col :span="2"
         ><div class="grid-content" />
         <router-link to="/about"
-          ><p class="menuOption">About</p></router-link
+          ><p class="headerMenu">About</p></router-link
         ></el-col
       >
     </el-row>
-  </header>
+  </el-header>
 </template>
-<script>
-export default {
-  name: "PageHeader",
-  props: ["menuItems"],
-};
-</script>
+
 <style scoped>
 .logoImage {
   margin-top: 1rem;
