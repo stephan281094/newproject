@@ -28,13 +28,13 @@
           </el-card>
         </el-col>
 
-        <pokemon-dialogue v-if="activePokemon" :pokemon="activePokemon" />
+        <pokemon-dialog v-if="activePokemon" :pokemon="activePokemon" />
       </el-space>
     </el-row>
   </el-container>
 </template>
 <script>
-import PokemonDialogue from "./PokemonDialogue.vue";
+import PokemonDialog from "./PokemonDialog.vue";
 export default {
   data() {
     return {
@@ -45,7 +45,7 @@ export default {
     pokemons: Array,
   },
   components: {
-    PokemonDialogue,
+    PokemonDialog,
   },
 };
 </script>
