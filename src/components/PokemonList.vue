@@ -1,7 +1,7 @@
 <template>
-  <el-containter>
+  <el-container>
     <el-row :gutter="20" justify="center">
-      <el-space wrap :size="large">
+      <el-space wrap size="large">
         <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
           <el-card style="width: 250px" @click="activePokemon = pokemon">
             <div class="pokemonCard" align="center">
@@ -18,7 +18,7 @@
                 Abilities:
                 <span
                   v-for="ability in pokemon.abilities"
-                  :key="pokemon.id"
+                  :key="ability.id"
                   class="pokemonAbility"
                 >
                   {{ ability.ability.name }}</span
@@ -31,7 +31,7 @@
         <pokemon-dialogue v-if="activePokemon" :pokemon="activePokemon" />
       </el-space>
     </el-row>
-  </el-containter>
+  </el-container>
 </template>
 <script>
 import PokemonDialogue from "./PokemonDialogue.vue";

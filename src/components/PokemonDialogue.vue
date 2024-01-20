@@ -16,7 +16,7 @@
       Abilities:
       <span
         v-for="ability in pokemon.abilities"
-        :key="pokemon.id"
+        :key="ability.id"
         class="pokemonAbility"
       >
         {{ ability.ability.name }}</span
