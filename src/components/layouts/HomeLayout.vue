@@ -14,6 +14,7 @@
 <script>
 import Pagination from "../common/Pagination.vue";
 import PokemonList from "../PokemonList.vue";
+import { mapMutations, mapState, mapActions } from "vuex";
 
 export default {
   components: {
@@ -29,7 +30,26 @@ export default {
       pokemons: [],
     };
   },
+  computed: {
+    ...mapState({
+      pokemons: (state) => state.pokemons,
+      currentPage: (state) => state.currentPage,
+      pageSize: (state) => state.pageSize,
+      totalCount: (state) => state.totalCount,
+      loading: (state) => state.loading,
+    }),
+  },
   methods: {
+    ...mapMutations({
+      setLoading: "setLoading",
+      setCurrentPage: "setCurrentPage",
+      setPageSize: "setPageSize",
+      setTotalCount: "setTotalCount",
+      setPokemons: "setPokemons",
+    }),
+    ...mapActions({
+      getData: "getData",
+    }),
     getData() {
       this.axios
         .get(
@@ -38,10 +58,12 @@ export default {
           }&limit=${this.pageSize}`
         )
         .then((response) => {
-          this.pokemons = [];
           this.totalCount = response.data.count;
+          this.pokemons = [];
           response.data.results.forEach((item) =>
-            this.axios.get(item.url).then((resp) => {
+            this.axios.get(item.url).then(async (resp) => {
+              resp.data.url = item.url;
+              resp.data.name = item.name;
               this.pokemons.push(resp.data);
             })
           );

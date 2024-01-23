@@ -17,7 +17,6 @@ p {
 .menuOption:hover {
   color: #118da8;
 }
-
 .logo {
   display: flex;
   flex-direction: column;
@@ -28,6 +27,10 @@ p {
 .pokemonWeight,
 .pokemonAbility {
   font-style: italic;
+}
+.el-dialog__title {
+  text-transform: capitalize;
+  font-family: DM Sans;
 }
 * {
   text-decoration: none;
