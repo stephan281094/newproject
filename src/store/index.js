@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import axios from "axios";
 const store = createStore({
   state() {
     return {
@@ -12,6 +13,9 @@ const store = createStore({
   mutations: {
     setPokemons(state, pokemons) {
       state.pokemons = pokemons;
+    },
+    addPokemons(state, pokemons) {
+      state.pokemons.push(pokemons);
     },
     setCurrentPage(state, currentPage) {
       state.currentPage = currentPage;
@@ -27,24 +31,23 @@ const store = createStore({
     },
   },
   actions: {
-    getData({ state, commit }) {
-      this.axios
+    async getData({ state, commit }, pagination) {
+      await axios
         .get(
           `https://pokeapi.co/api/v2/pokemon?offset=${
-            (state.currentPage - 1) * state.pageSize
-          }&limit=${state.pageSize}`
+            (pagination.currentPage - 1) * pagination.pageSize
+          }&limit=${pagination.pageSize}`
         )
         .then((response) => {
-          commit("setTotalCount", response.data.count);
           commit("setPokemons", []);
+          commit("setTotalCount", response.data.count);
           response.data.results.forEach((item) =>
-            this.axios.get(item.url).then(async (resp) => {
+            axios.get(item.url).then((resp) => {
               resp.data.url = item.url;
               resp.data.name = item.name;
-              this.pokemons.push(resp.data);
+              commit("addPokemons", resp.data);
             })
           );
-
           commit("setLoading", false);
         })
         .catch((error) => {
