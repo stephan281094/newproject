@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container v-loading="loading">
     <el-row :gutter="20" justify="center">
       <el-space wrap>
         <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
@@ -21,18 +21,22 @@
   </el-container>
 </template>
 <script>
+import { mapState } from "vuex";
 import PokemonDialog from "./PokemonDialog.vue";
 export default {
+  components: {
+    PokemonDialog,
+  },
+  props: {
+    pokemons: Array,
+  },
   data() {
     return {
       activePokemon: null,
     };
   },
-  props: {
-    pokemons: Array,
-  },
-  components: {
-    PokemonDialog,
+  computed: {
+    ...mapState(["loading"]),
   },
 };
 </script>
