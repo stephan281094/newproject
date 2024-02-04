@@ -5,12 +5,7 @@
     width="30%"
     align="center"
   >
-    <el-carousel
-      :interval="3000"
-      height="100px"
-      direction="vertical"
-      :autoplay="true"
-    >
+    <el-carousel height="100px" direction="vertical" :autoplay="false">
       <el-carousel-item>
         <img :src="pokemon?.sprites.back_default"
       /></el-carousel-item>
@@ -32,12 +27,12 @@
     </p>
     <p class="pokemonAbilities">
       Abilities:
-      <span
+      <el-tag
         v-for="ability in pokemon?.abilities"
         :key="ability.id"
         class="pokemonAbility"
       >
-        {{ ability.ability.name }}</span
+        {{ ability.ability.name }}</el-tag
       >
     </p>
     <template #footer>
@@ -70,7 +65,5 @@ export default {
 <style scoped>
 .pokemonAbilities {
   text-transform: capitalize;
-  display: flex;
-  flex-direction: column;
 }
 </style>

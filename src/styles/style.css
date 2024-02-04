@@ -1,11 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-h2,
-p {
-  font-family: DM Sans;
-}
 .headerMenu {
   color: #ffffff;
-  text-align: center;
+  /* text-align: center; */
 }
 .headerMenu:hover {
   color: #118da8;
@@ -28,10 +24,8 @@ p {
 .pokemonAbility {
   font-style: italic;
 }
-.el-dialog__title {
-  text-transform: capitalize;
-  font-family: DM Sans;
-}
 * {
   text-decoration: none;
+  font-family: DM Sans;
+  text-transform: capitalize;
 }

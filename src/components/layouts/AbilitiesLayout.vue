@@ -1,0 +1,60 @@
+<template>
+  <el-main>
+    <el-table :data="abilities" stripe v-loading="loading">
+      <el-table-column prop="id" label="ID" />
+      <el-table-column prop="name" label="Name" />
+      <el-table-column prop="effect_entries[1].effect" label="Description" />
+      <el-table-column prop="pokemon" label="Pokemons">
+        <template #default="scoped">
+          <el-collapse>
+            <el-collapse-item title="Pokemons:">
+              <el-tag v-for="pokemon in scoped.row.pokemon" :key="pokemon.id">
+                {{ pokemon.pokemon.name }}
+              </el-tag>
+            </el-collapse-item>
+          </el-collapse>
+        </template>
+      </el-table-column>
+    </el-table>
+  </el-main>
+  <pagination
+    :getData="getData"
+    :totalCount="totalCount"
+    v-model:current-page="currentPage"
+    v-model:page-size="pageSize"
+  />
+</template>
+<script>
+import { mapState } from "vuex";
+import Pagination from "../common/Pagination.vue";
+
+export default {
+  components: {
+    Pagination,
+  },
+  data() {
+    return {
+      currentPage: 1,
+      pageSize: 10,
+    };
+  },
+  computed: {
+    ...mapState({
+      abilities: (state) => state.abilities,
+      totalCount: (state) => state.totalCount,
+      loading: (state) => state.loading,
+    }),
+  },
+  methods: {
+    getData() {
+      return this.$store.dispatch("getAbilities", {
+        pageSize: this.pageSize,
+        currentPage: this.currentPage,
+      });
+    },
+  },
+  async mounted() {
+    this.getData();
+  },
+};
+</script>

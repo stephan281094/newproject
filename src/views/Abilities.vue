@@ -1,3 +1,11 @@
 <template>
-  <div><p>Abilities</p></div>
+  <div><AbilitiesLayout /></div>
 </template>
+<script>
+import AbilitiesLayout from "@/components/layouts/AbilitiesLayout.vue";
+export default {
+  components: {
+    AbilitiesLayout,
+  },
+};
+</script>
