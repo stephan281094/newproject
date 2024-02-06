@@ -5,6 +5,7 @@
     width="30%"
     align="center"
   >
+    <template #header></template>
     <el-carousel height="100px" direction="vertical" :autoplay="false">
       <el-carousel-item>
         <img :src="pokemon?.sprites.back_default"
@@ -22,13 +23,13 @@
     <p>
       Height:
       <input type="text" v-if="isEditing" v-model="weight" />
-      <span class="pokemonHeight" v-else>{{ pokemon?.height }}</span>
+      <span class="pokemonHeight" v-else>{{ pokemon.height }}</span>
     </p>
     <p>
       Weight:
 
       <input type="text" v-if="isEditing" v-model="height" />
-      <span class="pokemonWeight" v-else>{{ pokemon?.weight }}</span>
+      <span class="pokemonWeight" v-else>{{ pokemon.weight }}</span>
     </p>
     <p class="pokemonAbilities">
       Abilities:
@@ -66,6 +67,8 @@ export default {
     return {
       dialogVisible: false,
       isEditing: false,
+      weight: 0,
+      height: 0,
     };
   },
   props: {
@@ -77,6 +80,8 @@ export default {
   watch: {
     pokemon(pokemon) {
       this.dialogVisible = pokemon;
+      this.height = pokemon.height;
+      this.weight = pokemon.weight;
     },
   },
   methods: {
