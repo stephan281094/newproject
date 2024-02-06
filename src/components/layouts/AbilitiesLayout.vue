@@ -1,6 +1,12 @@
 <template>
   <el-main>
-    <el-table :data="abilities" stripe v-loading="loading">
+    <pagination
+      :getData="getData"
+      :totalCount="totalCount"
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+    />
+    <el-table :data="searchData()" stripe v-loading="loading">
       <el-table-column prop="id" label="ID" />
       <el-table-column prop="name" label="Name" />
       <el-table-column prop="effect_entries[1].effect" label="Description" />
@@ -13,6 +19,12 @@
               </el-tag>
             </el-collapse-item>
           </el-collapse>
+        </template>
+      </el-table-column>
+
+      <el-table-column>
+        <template #header>
+          <input type="text" v-model="search" placeholder="Search..." />
         </template>
       </el-table-column>
     </el-table>
@@ -36,6 +48,7 @@ export default {
     return {
       currentPage: 1,
       pageSize: 10,
+      search: [],
     };
   },
   computed: {
@@ -52,9 +65,25 @@ export default {
         currentPage: this.currentPage,
       });
     },
+    searchData() {
+      if (this.search) {
+        return this.abilities.filter(
+          (item) =>
+            item.name.includes(this.search) ||
+            item.id == this.search ||
+            item.pokemon.find((x) => x.pokemon.name === this.search)
+        );
+      }
+      return this.abilities;
+    },
   },
   async mounted() {
     this.getData();
   },
 };
 </script>
+<style>
+.el-table {
+  margin-top: 2rem;
+}
+</style>

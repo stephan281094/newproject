@@ -1,60 +1,26 @@
 <template>
   <el-header>
-    <el-row :gutter="20">
-      <el-col :span="19"
-        ><div class="grid-content" />
-        <router-link to="/"
-          ><img src="../../assets/icons/LogoHeader.svg" class="logoImage" />
-        </router-link>
-      </el-col>
-      <el-col :span="5" class="headerItems">
-        <div class="grid-content" />
-        <router-link to="/"><p class="headerMenu">Home</p></router-link
-        ><router-link to="/abilities"
-          ><p class="headerMenu">Abilities</p></router-link
-        >
-        <router-link to="/about"><p class="headerMenu">About</p></router-link>
-        <!-- <el-row :gutter="20">
-          <el-col :span="8"
-            ><div class="grid-content" />
-            <router-link to="/"
-              ><p class="headerMenu">Home</p></router-link
-            ></el-col
-          ><el-col :span="8"
-            ><div class="grid-content" />
-            <router-link to="/abilities"
-              ><p class="headerMenu">Abilities</p></router-link
-            ></el-col
-          ><el-col :span="8"
-            ><div class="grid-content" />
-            <router-link to="/about"
-              ><p class="headerMenu">About</p></router-link
-            ></el-col
-          ></el-row
-        > -->
-      </el-col>
-      <!-- <el-col :span="2"
-        ><div class="grid-content" />
-        <router-link to="/"><p class="headerMenu">Home</p></router-link></el-col
-      >
-      <el-col :span="2"
-        ><div class="grid-content" />
-        <router-link to="/abilities"
-          ><p class="headerMenu">Abilities</p></router-link
-        ></el-col
-      >
-      <el-col :span="2"
-        ><div class="grid-content" />
-        <router-link to="/about"
-          ><p class="headerMenu">About</p></router-link
-        ></el-col
-      > -->
-    </el-row>
+    <div>
+      <el-row :gutter="20">
+        <el-col :span="18"
+          ><div class="grid-content" />
+          <router-link to="/"
+            ><img src="../../assets/icons/LogoHeader.svg" class="logoImage" />
+          </router-link>
+        </el-col>
+        <el-col :span="6" class="headerItems">
+          <div class="grid-content" />
+          <router-link to="/"><p class="headerMenu">Home</p></router-link
+          ><router-link to="/abilities"
+            ><p class="headerMenu">Abilities</p></router-link
+          >
+          <router-link to="/about"><p class="headerMenu">About</p></router-link>
+        </el-col>
+      </el-row>
+    </div>
   </el-header>
 </template>
-<script>
-import { ElRow, ElCol } from "element-plus";
-</script>
+<script></script>
 <style scoped>
 .logoImage {
   margin-top: 1rem;

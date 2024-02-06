@@ -1,4 +1,11 @@
 <template>
-  <div><p>About</p></div>
+  <div><AboutLayoutVue /></div>
 </template>
-<script></script>
+<script>
+import AboutLayoutVue from "@/components/layouts/AboutLayout.vue";
+export default {
+  components: {
+    AboutLayoutVue,
+  },
+};
+</script>

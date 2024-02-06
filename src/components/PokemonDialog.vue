@@ -37,7 +37,10 @@
     </p>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="primary" @click="$emit('close')"> OK </el-button>
+        <el-button type="primary"
+          >Edit <el-icon :size="size" :color="color"> <Edit /> </el-icon
+        ></el-button>
+        <el-button @click="$emit('close')"> Cancel </el-button>
       </span>
     </template>
   </el-dialog>
@@ -60,6 +63,7 @@ export default {
       this.dialogVisible = pokemon;
     },
   },
+  methods: {},
 };
 </script>
 <style scoped>
