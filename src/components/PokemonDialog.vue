@@ -20,10 +20,15 @@
       /></el-carousel-item>
     </el-carousel>
     <p>
-      Height: <span class="pokemonHeight">{{ pokemon?.height }}</span>
+      Height:
+      <input type="text" v-if="isEditing" v-model="weight" />
+      <span class="pokemonHeight" v-else>{{ pokemon?.height }}</span>
     </p>
     <p>
-      Weight: <span class="pokemonWeight">{{ pokemon?.weight }}</span>
+      Weight:
+
+      <input type="text" v-if="isEditing" v-model="height" />
+      <span class="pokemonWeight" v-else>{{ pokemon?.weight }}</span>
     </p>
     <p class="pokemonAbilities">
       Abilities:
@@ -37,10 +42,20 @@
     </p>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="primary"
-          >Edit <el-icon :size="size" :color="color"> <Edit /> </el-icon
+        <el-button
+          type="primary"
+          @click="isEditing = !isEditing"
+          v-if="!isEditing"
+          >Edit <el-icon> <Edit /> </el-icon
         ></el-button>
-        <el-button @click="$emit('close')"> Cancel </el-button>
+        <el-button type="primary" @click="save" v-else-if="isEditing"
+          >Save</el-button
+        >
+        <el-button v-if="isEditing" @click="isEditing = false"
+          >Cancel</el-button
+        >
+
+        <!-- <el-button @click="$emit('close')"> Cancel </el-button> -->
       </span>
     </template>
   </el-dialog>
@@ -50,6 +65,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      isEditing: false,
     };
   },
   props: {
@@ -63,7 +79,9 @@ export default {
       this.dialogVisible = pokemon;
     },
   },
-  methods: {},
+  methods: {
+    save() {},
+  },
 };
 </script>
 <style scoped>

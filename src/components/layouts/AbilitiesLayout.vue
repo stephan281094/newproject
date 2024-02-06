@@ -6,7 +6,7 @@
       v-model:current-page="currentPage"
       v-model:page-size="pageSize"
     />
-    <el-table :data="searchData()" stripe v-loading="loading">
+    <el-table :data="searchData" stripe v-loading="loading">
       <el-table-column prop="id" label="ID" />
       <el-table-column prop="name" label="Name" />
       <el-table-column prop="effect_entries[1].effect" label="Description" />
@@ -48,7 +48,7 @@ export default {
     return {
       currentPage: 1,
       pageSize: 10,
-      search: [],
+      search: "",
     };
   },
   computed: {
@@ -57,6 +57,17 @@ export default {
       totalCount: (state) => state.totalCount,
       loading: (state) => state.loading,
     }),
+    searchData() {
+      if (this.search) {
+        return this.abilities.filter(
+          (item) =>
+            item.name.includes(this.search) ||
+            item.id == this.search ||
+            item.pokemon.find((x) => x.pokemon.name.includes(this.search))
+        );
+      }
+      return this.abilities;
+    },
   },
   methods: {
     getData() {
@@ -64,17 +75,6 @@ export default {
         pageSize: this.pageSize,
         currentPage: this.currentPage,
       });
-    },
-    searchData() {
-      if (this.search) {
-        return this.abilities.filter(
-          (item) =>
-            item.name.includes(this.search) ||
-            item.id == this.search ||
-            item.pokemon.find((x) => x.pokemon.name === this.search)
-        );
-      }
-      return this.abilities;
     },
   },
   async mounted() {
