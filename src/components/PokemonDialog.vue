@@ -1,11 +1,16 @@
 <template>
-  <el-dialog
-    v-model="dialogVisible"
-    :title="pokemon?.name"
-    width="30%"
-    align="center"
-  >
-    <template #header></template>
+  <el-dialog v-model="dialogVisible" width="30%" align="center">
+    <template #header="{ titleId, titleClass }">
+      <input
+        class="changePokemonName"
+        type="text"
+        v-if="isEditing"
+        v-model="name"
+      />
+      <h4 class="pokemonName" v-else :id="titleId" :class="titleClass">
+        {{ pokemon?.name }}
+      </h4>
+    </template>
     <el-carousel height="100px" direction="vertical" :autoplay="false">
       <el-carousel-item>
         <img :src="pokemon?.sprites.back_default"
@@ -22,14 +27,24 @@
     </el-carousel>
     <p>
       Height:
-      <input type="text" v-if="isEditing" v-model="weight" />
-      <span class="pokemonHeight" v-else>{{ pokemon.height }}</span>
+      <input
+        class="changePokemonHeight"
+        type="number"
+        v-if="isEditing"
+        v-model="height"
+      />
+      <span class="pokemonHeight" v-else>{{ pokemon?.height }}</span>
     </p>
     <p>
       Weight:
 
-      <input type="text" v-if="isEditing" v-model="height" />
-      <span class="pokemonWeight" v-else>{{ pokemon.weight }}</span>
+      <input
+        class="changePokemonWeight"
+        type="number"
+        v-if="isEditing"
+        v-model="weight"
+      />
+      <span class="pokemonWeight" v-else>{{ pokemon?.weight }}</span>
     </p>
     <p class="pokemonAbilities">
       Abilities:
@@ -49,14 +64,12 @@
           v-if="!isEditing"
           >Edit <el-icon> <Edit /> </el-icon
         ></el-button>
-        <el-button type="primary" @click="save" v-else-if="isEditing"
+        <el-button type="primary" @click="save()" v-else-if="isEditing"
           >Save</el-button
         >
         <el-button v-if="isEditing" @click="isEditing = false"
           >Cancel</el-button
         >
-
-        <!-- <el-button @click="$emit('close')"> Cancel </el-button> -->
       </span>
     </template>
   </el-dialog>
@@ -69,6 +82,7 @@ export default {
       isEditing: false,
       weight: 0,
       height: 0,
+      name: "",
     };
   },
   props: {
@@ -79,18 +93,34 @@ export default {
   },
   watch: {
     pokemon(pokemon) {
-      this.dialogVisible = pokemon;
-      this.height = pokemon.height;
-      this.weight = pokemon.weight;
+      this.dialogVisible = !!pokemon;
+      this.height = pokemon?.height;
+      this.weight = pokemon?.weight;
+      this.name = pokemon?.name;
     },
   },
   methods: {
-    save() {},
+    save() {
+      this.pokemon.name = this.name;
+      this.pokemon.weight = this.weight;
+      this.pokemon.height = this.height;
+      this.isEditing = !this.isEditing;
+    },
   },
 };
 </script>
 <style scoped>
 .pokemonAbilities {
   text-transform: capitalize;
+}
+.changePokemonName {
+  font-size: 1.5rem;
+}
+.pokemonName {
+  font-size: 1.5rem;
+}
+.changePokemonHeight,
+.changePokemonWeight {
+  font-size: 0.9rem;
 }
 </style>
