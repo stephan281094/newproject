@@ -72,7 +72,6 @@ const store = createStore({
               }))
             )
           );
-          console.log(abilities);
           commit("setAbilities", abilities);
           commit("setTotalCount", response.data.count);
           commit("setLoading", false);

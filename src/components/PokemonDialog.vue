@@ -7,7 +7,7 @@
         v-if="isEditing"
         v-model="name"
       />
-      <h4 class="pokemonName" v-else :id="titleId" :class="titleClass">
+      <h4 class="pokemonNameTitle" v-else :id="titleId" :class="titleClass">
         {{ pokemon?.name }}
       </h4>
     </template>
@@ -62,7 +62,7 @@
           type="primary"
           @click="isEditing = !isEditing"
           v-if="!isEditing"
-          >Edit <el-icon> <Edit /> </el-icon
+          >Edit <el-icon> <EditPen /> </el-icon
         ></el-button>
         <el-button type="primary" @click="save()" v-else-if="isEditing"
           >Save</el-button
@@ -116,7 +116,7 @@ export default {
 .changePokemonName {
   font-size: 1.5rem;
 }
-.pokemonName {
+.pokemonNameTitle {
   font-size: 1.5rem;
 }
 .changePokemonHeight,

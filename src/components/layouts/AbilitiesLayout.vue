@@ -24,7 +24,10 @@
 
       <el-table-column>
         <template #header>
-          <input type="text" v-model="search" placeholder="Search..." />
+          <el-input type="text" v-model="search" placeholder="Search...">
+            <template #prefix>
+              <el-icon class="el-input__icon"><search /></el-icon> </template
+          ></el-input>
         </template>
       </el-table-column>
     </el-table>
