@@ -17,7 +17,9 @@
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="addPokemon"> Confirm </el-button>
+        <el-button native-type="submit" type="primary" @click="addNewPokemon">
+          Confirm
+        </el-button>
       </div>
     </template>
   </el-dialog>
@@ -31,7 +33,7 @@
         align="center"
       >
         <div class="pokemonCard">
-          <img :src="pokemon.sprites.front_default" class="image" />
+          <img :src="pokemon?.sprites?.front_default" class="image" />
 
           <h2 class="pokemonName">{{ pokemon.name }}</h2>
         </div>
@@ -42,7 +44,7 @@
   </el-row>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 import PokemonDialog from "./PokemonDialog.vue";
 export default {
   data() {
@@ -61,18 +63,18 @@ export default {
     PokemonDialog,
   },
   computed: {
-    ...mapState(["loading"]),
+    ...mapState(["loading", "totalCount"]),
   },
   methods: {
-    addPokemon() {
-      const newPokemon = {
-        id: Date.now(),
+    ...mapMutations(["addPokemon"]),
+    addNewPokemon() {
+      this.addPokemon({
+        id: this.totalCount + 1,
         name: this.name,
         height: this.height,
         weight: this.weight,
-      };
-      this.pokemons.unshift(newPokemon);
-      console.log(this.pokemons);
+      });
+      this.dialogFormVisible = false;
     },
   },
 };

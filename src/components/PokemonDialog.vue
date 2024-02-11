@@ -1,7 +1,7 @@
 <template>
   <el-dialog v-model="dialogVisible" width="30%" align="center">
     <template #header="{ titleId, titleClass }">
-      <input
+      <el-input
         class="changePokemonName"
         type="text"
         v-if="isEditing"
@@ -11,23 +11,33 @@
         {{ pokemon?.name }}
       </h4>
     </template>
-    <el-carousel height="100px" direction="vertical" :autoplay="false">
-      <el-carousel-item>
-        <img :src="pokemon?.sprites.back_default"
+    <el-carousel
+      height="100px"
+      direction="vertical"
+      :autoplay="false"
+      v-if="
+        pokemon?.sprites?.back_default ||
+        pokemon?.sprites?.front_default ||
+        pokemon?.sprites?.back_shiny ||
+        pokemon?.sprites?.front_shiny
+      "
+    >
+      <el-carousel-item v-if="pokemon?.sprites?.back_default">
+        <img :src="pokemon?.sprites?.back_default"
       /></el-carousel-item>
-      <el-carousel-item>
-        <img :src="pokemon?.sprites.front_default"
+      <el-carousel-item v-if="pokemon?.sprites?.front_default">
+        <img :src="pokemon?.sprites?.front_default"
       /></el-carousel-item>
-      <el-carousel-item>
-        <img :src="pokemon?.sprites.back_shiny"
+      <el-carousel-item v-if="pokemon?.sprites?.back_shiny">
+        <img :src="pokemon?.sprites?.back_shiny"
       /></el-carousel-item>
-      <el-carousel-item>
-        <img :src="pokemon?.sprites.front_shiny"
+      <el-carousel-item v-if="pokemon?.sprites?.front_shiny">
+        <img :src="pokemon?.sprites?.front_shiny"
       /></el-carousel-item>
     </el-carousel>
     <p>
       Height:
-      <input
+      <el-input
         class="changePokemonHeight"
         type="number"
         v-if="isEditing"
@@ -38,7 +48,7 @@
     <p>
       Weight:
 
-      <input
+      <el-input
         class="changePokemonWeight"
         type="number"
         v-if="isEditing"
@@ -46,7 +56,7 @@
       />
       <span class="pokemonWeight" v-else>{{ pokemon?.weight }}</span>
     </p>
-    <p class="pokemonAbilities">
+    <p class="pokemonAbilities" v-if="pokemon?.abilities">
       Abilities:
       <el-tag
         v-for="ability in pokemon?.abilities"
@@ -90,6 +100,7 @@ export default {
       type: Object,
       required: false,
     },
+    pokemons: Array,
   },
   watch: {
     pokemon(pokemon) {

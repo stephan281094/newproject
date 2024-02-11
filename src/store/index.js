@@ -22,6 +22,9 @@ const store = createStore({
     setAbilities(state, abilities) {
       state.abilities = abilities;
     },
+    addPokemon(state, pokemon) {
+      state.pokemons.push(pokemon);
+    },
   },
   actions: {
     getData({ commit }, pagination) {
@@ -44,7 +47,6 @@ const store = createStore({
               }))
             )
           );
-
           commit("setPokemons", pokemons);
           commit("setTotalCount", response.data.count);
           commit("setLoading", false);
@@ -75,6 +77,7 @@ const store = createStore({
           commit("setAbilities", abilities);
           commit("setTotalCount", response.data.count);
           commit("setLoading", false);
+          console.log(abilities);
         })
         .catch((error) => {
           console.warn(error);
