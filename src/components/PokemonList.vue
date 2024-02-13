@@ -3,17 +3,36 @@
     >Add<el-icon><CirclePlusFilled /></el-icon
   ></el-button>
   <el-dialog v-model="dialogFormVisible" title="Add a new pokemon" width="500">
-    <form>
-      <el-form-item label="Name" :label-width="formLabelWidth">
-        <el-input type="text" v-model="name" placeholder="Type name" />
+    <el-form
+      :model="newPokemon"
+      :rules="newPokemonValidation"
+      ref="newPokemonForm"
+    >
+      <el-form-item label="Name">
+        <el-input
+          type="text"
+          v-model="newPokemon.name"
+          placeholder="Type name"
+          prop="name"
+        />
       </el-form-item>
-      <el-form-item label="Height" :label-width="formLabelWidth">
-        <el-input type="number" v-model="height" placeholder="Type height" />
+      <el-form-item label="Height">
+        <el-input
+          type="number"
+          v-model="newPokemon.height"
+          placeholder="Type height"
+          prop="height"
+        />
       </el-form-item>
-      <el-form-item label="Weight" :label-width="formLabelWidth">
-        <el-input type="number" v-model="weight" placeholder="Type weight" />
+      <el-form-item label="Weight">
+        <el-input
+          type="number"
+          v-model="newPokemon.weight"
+          placeholder="Type weight"
+          prop="weight"
+        />
       </el-form-item>
-    </form>
+    </el-form>
     <template #footer>
       <div class="dialog-footer">
         <el-button @click="dialogFormVisible = false">Cancel</el-button>
@@ -46,14 +65,20 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import PokemonDialog from "./PokemonDialog.vue";
+import { validateName } from "@/mixins/validator.js";
 export default {
   data() {
     return {
       activePokemon: null,
       dialogFormVisible: false,
-      name: "",
-      height: 0,
-      weight: 0,
+      newPokemon: {
+        name: "",
+        height: 0,
+        weight: 0,
+      },
+      newPokemonValidation: {
+        name: [{ validator: validateName, trigger: "blur" }],
+      },
     };
   },
   props: {
@@ -68,13 +93,18 @@ export default {
   methods: {
     ...mapMutations(["addPokemon"]),
     addNewPokemon() {
-      this.addPokemon({
-        id: this.totalCount + 1,
-        name: this.name,
-        height: this.height,
-        weight: this.weight,
+      console.log(this.$refs["newPokemonForm"]);
+      this.$refs["newPokemonForm"].validate((valid) => {
+        if (valid) {
+          this.addPokemon({
+            id: this.totalCount + 1,
+            name: this.name,
+            height: this.height,
+            weight: this.weight,
+          });
+          this.dialogFormVisible = false;
+        }
       });
-      this.dialogFormVisible = false;
     },
   },
 };

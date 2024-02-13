@@ -23,7 +23,7 @@ const store = createStore({
       state.abilities = abilities;
     },
     addPokemon(state, pokemon) {
-      state.pokemons.push(pokemon);
+      state.pokemons.unshift(pokemon);
     },
   },
   actions: {
