@@ -8,28 +8,25 @@
       :rules="newPokemonValidation"
       ref="newPokemonForm"
     >
-      <el-form-item label="Name">
+      <el-form-item label="Name" prop="name">
         <el-input
           type="text"
           v-model="newPokemon.name"
           placeholder="Type name"
-          prop="name"
         />
       </el-form-item>
-      <el-form-item label="Height">
+      <el-form-item label="Height" prop="height">
         <el-input
           type="number"
           v-model="newPokemon.height"
           placeholder="Type height"
-          prop="height"
         />
       </el-form-item>
-      <el-form-item label="Weight">
+      <el-form-item label="Weight" prop="weight">
         <el-input
           type="number"
           v-model="newPokemon.weight"
           placeholder="Type weight"
-          prop="weight"
         />
       </el-form-item>
     </el-form>
@@ -93,15 +90,15 @@ export default {
   methods: {
     ...mapMutations(["addPokemon"]),
     addNewPokemon() {
-      console.log(this.$refs["newPokemonForm"]);
       this.$refs["newPokemonForm"].validate((valid) => {
         if (valid) {
           this.addPokemon({
             id: this.totalCount + 1,
-            name: this.name,
-            height: this.height,
-            weight: this.weight,
+            name: this.newPokemon.name,
+            height: this.newPokemon.height,
+            weight: this.newPokemon.weight,
           });
+
           this.dialogFormVisible = false;
         }
       });
