@@ -39,14 +39,12 @@
       </div>
     </template>
   </el-dialog>
-  <el-row :gutter="20" justify="space-around" v-loading="loading">
-    <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4.8">
+  <el-row v-loading="loading" justify="space-between">
+    <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
       <el-card
-        :body-style="{ padding: '40px' }"
-        class="box-card"
-        style="width: 250px"
         @click="activePokemon = pokemon"
         align="center"
+        :body-style="{ padding: '20px' }"
       >
         <div class="pokemonCard">
           <img :src="pokemon?.sprites?.front_default" class="image" />
@@ -115,5 +113,10 @@ export default {
 }
 .el-card:hover {
   cursor: pointer;
+}
+.el-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
 </style>

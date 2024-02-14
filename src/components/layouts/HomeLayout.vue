@@ -1,14 +1,14 @@
 <template>
   <el-main>
-    <div>
-      <pokemon-list :pokemons="pokemons" />
-      <pagination
-        :getData="getData"
-        :totalCount="totalCount"
-        v-model:current-page="currentPage"
-        v-model:page-size="pageSize"
-      /></div
-  ></el-main>
+    <h1>All Pokémons</h1>
+    <pokemon-list :pokemons="pokemons" />
+    <pagination
+      :getData="getData"
+      :totalCount="totalCount"
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+      class="paginationHome"
+  /></el-main>
 </template>
 <script>
 import { mapState } from "vuex";
@@ -45,3 +45,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+.paginationHome {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+</style>

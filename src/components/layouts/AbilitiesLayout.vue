@@ -1,15 +1,35 @@
 <template>
   <el-main>
-    <pagination
-      :getData="getData"
-      :totalCount="totalCount"
-      v-model:current-page="currentPage"
-      v-model:page-size="pageSize"
-    />
+    <h1>Abilities</h1>
+    <h3>
+      Here's the list of abilities that pokemons have with detailed description
+    </h3>
+    <el-row :gutter="20" align="middle">
+      <el-col :span="10">
+        <pagination
+          :getData="getData"
+          :totalCount="totalCount"
+          v-model:current-page="currentPage"
+          v-model:page-size="pageSize"
+      /></el-col>
+      <el-col :span="10"></el-col>
+      <el-col :span="4">
+        <el-input type="text" v-model="search" placeholder="Search...">
+          <template #prefix>
+            <el-icon class="el-input__icon"><search /></el-icon> </template
+        ></el-input>
+      </el-col>
+    </el-row>
+    <div class="searchAndPagination"></div>
+
     <el-table :data="searchData" stripe v-loading="loading">
-      <el-table-column prop="id" label="ID" />
-      <el-table-column prop="name" label="Name" />
-      <el-table-column prop="effect_entries[1].effect" label="Description" />
+      <el-table-column prop="id" label="ID" width="50" />
+      <el-table-column prop="name" label="Name" width="200" />
+      <el-table-column
+        prop="effect_entries[1].effect"
+        label="Description"
+        width="700"
+      />
       <el-table-column prop="pokemon" label="Pokemons">
         <template #default="scoped">
           <el-collapse>
@@ -21,23 +41,15 @@
           </el-collapse>
         </template>
       </el-table-column>
-
-      <el-table-column>
-        <template #header>
-          <el-input type="text" v-model="search" placeholder="Search...">
-            <template #prefix>
-              <el-icon class="el-input__icon"><search /></el-icon> </template
-          ></el-input>
-        </template>
-      </el-table-column>
     </el-table>
+
+    <pagination
+      :getData="getData"
+      :totalCount="totalCount"
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+    />
   </el-main>
-  <pagination
-    :getData="getData"
-    :totalCount="totalCount"
-    v-model:current-page="currentPage"
-    v-model:page-size="pageSize"
-  />
 </template>
 <script>
 import { mapState } from "vuex";

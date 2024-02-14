@@ -19,7 +19,6 @@ export default {
 .el-pagination {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   margin-top: 30px;
   margin-bottom: 20px;
 }

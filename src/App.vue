@@ -1,8 +1,10 @@
 <template>
   <div>
-    <page-header />
-    <router-view />
-    <page-footer />
+    <el-container :direction="direction">
+      <page-header />
+      <router-view />
+      <page-footer />
+    </el-container>
   </div>
 </template>
 <script>
@@ -13,6 +15,11 @@ export default {
   components: {
     PageHeader,
     PageFooter,
+  },
+  data() {
+    return {
+      direction: "vertical",
+    };
   },
 };
 </script>
