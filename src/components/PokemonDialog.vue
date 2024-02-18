@@ -72,8 +72,9 @@
           type="primary"
           @click="isEditing = !isEditing"
           v-if="!isEditing"
-          >Edit <el-icon> <EditPen /> </el-icon
-        ></el-button>
+        >
+          <el-icon> <EditPen /> </el-icon><span>Edit</span></el-button
+        >
         <el-button type="primary" @click="save()" v-else-if="isEditing"
           >Save</el-button
         >
@@ -129,6 +130,7 @@ export default {
 }
 .pokemonNameTitle {
   font-size: 1.5rem;
+  text-transform: capitalize;
 }
 .changePokemonHeight,
 .changePokemonWeight {

@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import axios from "axios";
+import yesno from "./yesno";
 const store = createStore({
   state() {
     return {
@@ -7,6 +8,8 @@ const store = createStore({
       totalCount: 0,
       loading: true,
       abilities: [],
+      answer: "",
+      image: "",
     };
   },
   mutations: {
@@ -24,6 +27,12 @@ const store = createStore({
     },
     addPokemon(state, pokemon) {
       state.pokemons.unshift(pokemon);
+    },
+    setAnswer(state, answer) {
+      state.answer = answer;
+    },
+    setImage(state, image) {
+      state.image = image;
     },
   },
   actions: {
@@ -83,6 +92,9 @@ const store = createStore({
           console.warn(error);
         });
     },
+  },
+  modules: {
+    yesno,
   },
 });
 

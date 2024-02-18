@@ -1,7 +1,7 @@
 <template>
-  <el-button type="primary" @click="dialogFormVisible = true"
-    >Add<el-icon><CirclePlusFilled /></el-icon
-  ></el-button>
+  <el-button type="primary" @click="dialogFormVisible = true" class="addButton"
+    ><el-icon><CirclePlusFilled /></el-icon><span>Add</span></el-button
+  >
   <el-dialog v-model="dialogFormVisible" title="Add a new pokemon" width="500">
     <el-form
       :model="newPokemon"
@@ -41,11 +41,7 @@
   </el-dialog>
   <el-row v-loading="loading" justify="space-between">
     <el-col v-for="pokemon in pokemons" :key="pokemon.id" :span="4">
-      <el-card
-        @click="activePokemon = pokemon"
-        align="center"
-        :body-style="{ padding: '20px' }"
-      >
+      <el-card @click="activePokemon = pokemon" align="center">
         <div class="pokemonCard">
           <img :src="pokemon?.sprites?.front_default" class="image" />
 

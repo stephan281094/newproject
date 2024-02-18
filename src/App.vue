@@ -23,3 +23,8 @@ export default {
   },
 };
 </script>
+<style>
+.el-container {
+  padding: 20px 80px 20px 80px;
+}
+</style>

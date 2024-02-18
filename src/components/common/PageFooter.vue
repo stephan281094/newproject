@@ -5,7 +5,7 @@
         ><div class="grid-content" />
         <div class="logo">
           <router-link to="/"
-            ><img src="../../assets/icons/LogoFooter.svg" class="logoImage"
+            ><img src="../../assets/icons/pokemonlogo.svg" class="logoImage"
           /></router-link>
 
           <div class="socialMedia">
@@ -70,5 +70,9 @@ export default {
   flex-direction: row;
   gap: 1rem;
   margin-top: 1rem;
+}
+.logoImage {
+  cursor: pointer;
+  height: 6rem;
 }
 </style>
