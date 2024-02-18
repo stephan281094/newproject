@@ -1,7 +1,5 @@
-import { createStore } from "vuex";
 import axios from "axios";
-// import yesno from "./yesno";
-const store = createStore({
+export default {
   state() {
     return {
       pokemons: [],
@@ -86,29 +84,10 @@ const store = createStore({
           commit("setAbilities", abilities);
           commit("setTotalCount", response.data.count);
           commit("setLoading", false);
-          console.log(abilities);
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
-    },
-    getAnswer({ commit }) {
-      commit("setLoading", true);
-      return axios
-        .get("https://yesno.wtf/api")
-        .then((response) => {
-          commit("setAnswer", response.data.answer);
-          commit("setImage", response.data.image);
-          commit("setLoading", false);
         })
         .catch((error) => {
           console.warn(error);
         });
     },
   },
-  // modules: {
-  //   yesno,
-  // },
-});
-
-export default store;
+};

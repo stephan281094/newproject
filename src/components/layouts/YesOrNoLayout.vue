@@ -18,10 +18,14 @@
         </div>
       </el-col>
     </el-row>
-    <div class="response" v-loading="loading">
+    <el-row justify="center">
+      <h1 class="answer" v-loading="loading">{{ answer }}</h1></el-row
+    >
+    <el-row justify="center"> <img :src="image" v-loading="loading" /></el-row>
+    <!-- <div class="response" v-loading="loading">
       <h1 class="answer">{{ answer }}</h1>
       <img :src="image" />
-    </div>
+    </div> -->
   </el-main>
 </template>
 <script>
@@ -32,7 +36,7 @@ export default {
       // answer: "",
       // image: "",
       input: "",
-      loading: false,
+      // loading: false,
     };
   },
   methods: {
@@ -55,11 +59,11 @@ export default {
       this.input = "";
     },
     ...mapActions(["getAnswer"]),
-    ...mapMutations(["setAnswer", "setImage", "setLoading"]),
+    // ...mapMutations(["setAnswer", "setImage", "setLoading"]),
   },
   computed: {
     ...mapState({
-      // loading: (state) => state.loading,
+      loading: (state) => state.loading,
       answer: (state) => state.answer,
       image: (state) => state.image,
     }),
