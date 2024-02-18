@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import axios from "axios";
-// import yesno from "./yesno";
+
 const store = createStore({
   state() {
     return {
@@ -106,9 +106,6 @@ const store = createStore({
         });
     },
   },
-  // modules: {
-  //   yesno,
-  // },
 });
 
 export default store;

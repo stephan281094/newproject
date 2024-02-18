@@ -23,6 +23,9 @@
           ><p class="menuOption">Abilities</p>
         </router-link>
         <router-link to="/about"><p class="menuOption">About</p> </router-link>
+        <router-link to="/yesorno"
+          ><p class="headerMenu">Yes Or No</p></router-link
+        >
       </el-col>
       <el-col :span="5"
         ><div class="grid-content" />
@@ -30,9 +33,10 @@
         <router-link to="/abilities"
           ><p class="menuOption">Abilities</p>
         </router-link>
-        <router-link to="/about"
-          ><p class="menuOption">About</p>
-        </router-link></el-col
+        <router-link to="/about"><p class="menuOption">About</p> </router-link>
+        <router-link to="/yesorno"
+          ><p class="headerMenu">Yes Or No</p></router-link
+        ></el-col
       >
       <el-col :span="7"
         ><div class="grid-content" />
