@@ -45,9 +45,9 @@ export default {
   },
   computed: {
     ...mapState({
-      loading: (state) => state.loading,
-      answer: (state) => state.answer,
-      image: (state) => state.image,
+      loading: (state) => state.yesOrNo.loading,
+      answer: (state) => state.yesOrNo.answer,
+      image: (state) => state.yesOrNo.image,
     }),
   },
 };
