@@ -41,13 +41,13 @@ export default {
     clearText() {
       this.input = "";
     },
-    ...mapActions(["getAnswer"]),
+    ...mapActions("yesOrNo", ["getAnswer"]),
   },
   computed: {
-    ...mapState({
-      loading: (state) => state.yesOrNo.loading,
-      answer: (state) => state.yesOrNo.answer,
-      image: (state) => state.yesOrNo.image,
+    ...mapState("yesOrNo", {
+      loading: (state) => state.loading,
+      answer: (state) => state.answer,
+      image: (state) => state.image,
     }),
   },
 };

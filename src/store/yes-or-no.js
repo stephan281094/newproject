@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const yesOrNo = {
+  namespaced: true,
   state() {
     return {
       answer: "",
